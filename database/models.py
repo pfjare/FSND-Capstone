@@ -5,9 +5,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from datetime import date
 import json
 from flask_migrate import Migrate, MigrateCommand
-database_filename = "database.db"
-project_dir = os.path.dirname(os.path.abspath(__file__))
-database_path = "sqlite:///{}".format(os.path.join(project_dir, database_filename))
+
+database_path = os.environ['DATABASE_URL']
 
 db = SQLAlchemy()
 

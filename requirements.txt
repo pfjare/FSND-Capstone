@@ -4,3 +4,5 @@ Flask-CORS
 SQLAlchemy
 gunicorn
 Flask-Migrate
+psycopg2-binary
+flask_script
