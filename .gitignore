@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/flask,python,windows
 # Edit at https://www.gitignore.io/?templates=flask,python,windows
-
+.vscode/
 ### Flask ###
 instance/*
 !instance/.gitignore
@@ -17,6 +17,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+
 venv/
 .Python
 build/
