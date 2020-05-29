@@ -6,7 +6,7 @@ from datetime import date
 import json
 from flask_migrate import Migrate, MigrateCommand
 
-database_path = "postgresql://postgres:grape@localhost:5432/trivia" 
+database_path = os.environ['DATABASE_URL']
 
 db = SQLAlchemy()
 
