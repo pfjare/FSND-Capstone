@@ -11,7 +11,7 @@ def create_app():
     app = Flask(__name__)
     setup_db(app)
     migrate=migrate_db(app)
-    db_drop_and_create_all()
+    
 
     '''
     GET /movies
