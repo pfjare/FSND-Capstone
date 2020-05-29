@@ -12,26 +12,13 @@ def create_app():
     setup_db(app)
     migrate=migrate_db(app)
     
-
-    '''
-    GET /movies
-    GET /movies/:id
-    POST /movies
-    PATCH /movies/:id
-    DELETE /movies/:id
-    POST /search/movies
-    GET /actors
-    GET /actors/:id
-    POST /actors
-    PATCH /actors/:id
-    DELETE /actors/:id
-    POST /search/actors
-    '''
     # Converts date string to date object
     # String format y-m-d Ex: 2002-5-10
     def convert_date(date_str):
         date_str = date_str.split("-")
         return date(int(date_str[0]), int(date_str[1]), int(date_str[2]))
+
+    ## Movies
 
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
@@ -58,7 +45,7 @@ def create_app():
         actors = Actor.query.filter(Actor.movies.any(Movie.id == movie_id)).all()
         # Format movie
         movie_formatted = movie.format()
-        # Add actors to movie object
+        # Add list of actors to movie object
         movie_formatted.update({'actors': [actor.id for actor in actors]})
         
         return jsonify({
@@ -90,8 +77,10 @@ def create_app():
             print(error)
             abort(422)
         return jsonify({
-            'success': True
+            'success': True,
+            'created': movie.id
         })
+
     @app.route('/movies/<int:movie_id>', methods=["PATCH"])
     @requires_auth('patch:movies')
     def update_movie(movie_id):
@@ -118,7 +107,7 @@ def create_app():
             abort(422)
         return jsonify({
             'success': True,
-            'movie': movie.id
+            'edited': movie.id
         })
 
     # DELETE /movies/:id - Requires delete:movies permission
@@ -136,26 +125,20 @@ def create_app():
 
         return jsonify({
             "success": True,
-            "delete": movie.id
+            "deleted": movie.id
         })
 
-    @app.route('/movies/<int:movie_id>/actors', methods=["POST"])
+    @app.route('/movies/<int:movie_id>/actors/<int:actor_id>', methods=["POST"])
     @requires_auth('patch:movies')
-    def add_actor_to_movie(movie_id):
-        data = request.get_json()
-        actors = data.get('actors', None)
-        if actors is None:
-            abort(404)
-
+    def add_actor_to_movie(movie_id, actor_id):
         movie = Movie.query.filter(Movie.id == movie_id).one_or_none()
         if movie is None:
             abort(404)
-        
-        # Append actors in list to movie
-        for actor in actors:
-            actor = Actor.query.filter(Actor.id == actor).one_or_none()
-            if actor is not None:
-                movie.actors.append(actor)
+        actor = Actor.query.filter(Actor.id == actor_id).one_or_none()
+        # Append actor to movie
+        if actor is None:
+            abort(404)
+        movie.actors.append(actor)
         try:
             movie.update()
         except exc.SQLAlchemyError as error:
@@ -164,6 +147,7 @@ def create_app():
         return jsonify({
             "success": True
         })    
+
     @app.route('/movies/<int:movie_id>/actors/<int:actor_id>', methods=["DELETE"])
     @requires_auth('patch:movies')
     def remove_actor_from_movie(movie_id, actor_id):
@@ -183,6 +167,7 @@ def create_app():
             "success": True
         })
 
+    ## Actors
 
     @app.route('/actors', methods=['GET'])
     @requires_auth('get:actors')
@@ -206,8 +191,12 @@ def create_app():
         actor = Actor.query.filter(Actor.id == actor_id).one_or_none()
         if actor is None:
             abort(404)
+        
+        # Get movies assigned to actor
         movies = Movie.query.filter(Movie.actors.any(Actor.id == actor_id)).all()
+        # format movie
         actor_formatted = actor.format()
+        # Add list of movies to actor object
         actor_formatted.update({'movies': [movie.id for movie in movies]})
         return jsonify({
             "success": True,
@@ -225,7 +214,7 @@ def create_app():
         last_name = data.get('last_name', None)
         gender = data.get('gender', None)
         birth_date = data.get('birth_date', None)
-        movies = data.get('movies', None)
+      
         # Request body must contain first_name, last_name,
         # gender, and birth_date
         if (last_name is None or first_name is None or
@@ -236,11 +225,7 @@ def create_app():
                     first_name=first_name,
                     gender=gender,
                     birth_date=convert_date(birth_date))
-        if movies is not None:
-            for movie in movies:
-                movie = Movie.query.filter(Movie.id == movie).one_or_none()
-                if movie is not None:
-                    actor.moviess.append(movie)
+        
         try:
 
             actor.insert()
@@ -248,8 +233,10 @@ def create_app():
             print(error)
             abort(422)
         return jsonify({
-            'success': True
+            'success': True,
+            'created': actor.id
         })
+
     @app.route('/actors/<int:actor_id>', methods=["PATCH"])
     @requires_auth('patch:actors')
     def update_actor(actor_id):
@@ -279,11 +266,10 @@ def create_app():
             print(error)
             abort(422)
         return jsonify({
-            'success': True
+            'success': True,
+            'edited': actor.id
         })
 
-
-    # DELETE /actors/:id - Requires delete:actors permission
     @app.route('/actors/<int:actor_id>', methods=['DELETE'])
     @requires_auth('delete:actors')
     def delete_actors(actor_id):
@@ -298,7 +284,7 @@ def create_app():
 
         return jsonify({
             "success": True,
-            "delete": actor.id
+            "deleted": actor.id
         })
 
 
@@ -310,7 +296,7 @@ def create_app():
         return jsonify({
             "success": False, 
             "error": 422,
-            "message": "unprocessable"
+            "message": "Unprocessable Entity"
             }), 422
 
     @app.errorhandler(404)
@@ -318,8 +304,15 @@ def create_app():
         return jsonify({
             "success": False, 
             "error": 404,
-            "message": "resource not found"
+            "message": "Resource Not Found"
             }), 404
+    @app.errorhandler(400)
+    def resource_not_found(error):
+        return jsonify({
+            "success": False, 
+            "error": 400,
+            "message": "Bad Request"
+            }), 400
     #AuthError defined in auth.py
     @app.errorhandler(AuthError)
     def authentication(error):

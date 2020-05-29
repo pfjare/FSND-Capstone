@@ -6,7 +6,7 @@ from datetime import date
 import json
 from flask_migrate import Migrate, MigrateCommand
 
-database_path = os.environ['DATABASE_URL']
+database_path = "postgresql://postgres:grape@localhost:5432/trivia" 
 
 db = SQLAlchemy()
 
@@ -86,7 +86,8 @@ class Actor(db.Model):
         return {
             'id': self.id,
             'name': f'{self.first_name} {self.last_name}',
-            'age': calculate_age(self.birth_date)
+            'age': calculate_age(self.birth_date),
+            'gender': self.gender
         }
 
 
