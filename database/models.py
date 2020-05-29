@@ -34,12 +34,11 @@ def db_drop_and_create_all():
     db.drop_all()
     db.create_all()
 
-
+# Association Table
 actor_movie = Table('actor_movie', db.Model.metadata,
     Column('actor_id', Integer().with_variant(Integer, "sqlite"), ForeignKey('actor.id'), primary_key=True),
     Column('movie_id', Integer().with_variant(Integer, "sqlite"), ForeignKey('movie.id'), primary_key=True)
 ) 
-
 
 class Movie(db.Model):
     id = Column(Integer().with_variant(Integer, "sqlite"), primary_key=True)
@@ -47,6 +46,7 @@ class Movie(db.Model):
     release_date = Column(Date)
     genre = Column(String)
     actors = db.relationship('Actor', secondary=actor_movie, backref=db.backref('movies', lazy='select'))
+   
     def insert(self):
         db.session.add(self)
         db.session.commit()
@@ -57,6 +57,7 @@ class Movie(db.Model):
 
     def update(self):
         db.session.commit()
+    
     def format(self):
         return {
             'id': self.id,
@@ -82,6 +83,7 @@ class Actor(db.Model):
 
     def update(self):
         db.session.commit()
+    
     def format(self):
         return {
             'id': self.id,

@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "c604162f-12a0-409b-9483-046a146a4ec9",
+		"name": "FSND-Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:5000/movies?page=1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:5000/movies/4",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"movies",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Zombieland\",\n\t\"genre\": \"Comedy\",\n\t\"release_date\": \"2002-10-31\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:5000/movies",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/:id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"genre\": \"Comedy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:5000/movies/9",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"movies",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:5000/movies/3",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"movies",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/:id/actors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"actors\": [1]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:5000/movies/5/actors",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"movies",
+						"5",
+						"actors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/:id/actors",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"actors\": [1]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/movies/4/actors/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"movies",
+						"4",
+						"actors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:5000/movies?page=1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actors/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:5000/actors/2",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"actors",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\": \"Will\",\n\t\"last_name\":\"Ferrell\",\n\t\"gender\":\"male\",\n\t\"birth_date\":\"1967-7-16\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:5000/actors",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"actors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actors/:id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"birth_date\":\"1967-7-16\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:5000/actors/1",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"actors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actors",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:5000/actors/4",
+					"host": [
+						"{{host}}"
+					],
+					"port": "5000",
+					"path": [
+						"actors",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikg4UlMtbXlmM0lyaTFWM3k3QjRiWiJ9.eyJpc3MiOiJodHRwczovL2NsYXNzdWRhY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWViMDdmOTIxY2MxYWMwYzE0ODRlZDczIiwiYXVkIjoiY2FzdGluZyIsImlhdCI6MTU5MDcxODUyOSwiZXhwIjoxNTkwODA0OTI5LCJhenAiOiJLNUtVNkFSdUpLVTRqRUtNSmM1NmtiekM0d0dGRGZaOCIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.KlLDkcxvvC7TUG23IeNgvZUfIpgADeFiMEnzwcWlTTZkCtR8UkLzpatF5_6zEBK5nf91zTgSoWKkVljuKIOKrcV7n9yVZ4BSUxsDJ_nmfAD5L5pv_m_dMPv9GnqXJY99d5ckcmB_8HhGLai1Kp_uPplzoOhQQQJXQ1M4uayK4O1AtlGQPtWj6dd5ycnMcgb_4nhWPzVvN386DzkmPj5LR3yAONnrdT98qE5n7jp6cvAXCEmKyMJUr3TBszkT3Ni34fTBFx9EPIVd9_42QYsGmamQ0zZ0g1dA0YF8Y5MO1kqDAxmU9O_H7lhGwoxXdyDhma97_UVb1ahY-KIAHXySUA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "71247074-5101-4a27-83bc-06005bda001c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "fda66bff-8aa1-4d93-af5c-71ba0c2f5781",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "81f85bda-113c-47b2-9fde-d12ee04db5dd",
+			"key": "host",
+			"value": "https://fsnd-pfjare.herokuapp.com/",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

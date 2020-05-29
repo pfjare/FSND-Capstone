@@ -59,6 +59,10 @@ Errors with authentications (401) provide additional info about the error in the
 }
 ```
 
+## Postman
+
+I have included a Postman collection FSND-Capstone.postman_collection.json with each endpoint to make it easy for the reviewer to test. Just change the bearer token to test a different role.
+
 ## The movie object
 
 Contains the unique id of the movie, the movie's title, the movie's genre, and the movies release date.
@@ -207,7 +211,7 @@ title \[string\] (required) - The movie title.
 
 genre \[string\] (required) - The genre of the movie.
 
-release_date \[string\] (required) - The movie release date.
+release_date \[string\] (required) - The movie release date. Format y-m-d (Ex: 1997-12-05).
 
 **Returns:** A success value and the id of the created movie.
 
@@ -237,7 +241,7 @@ title \[string\] (optional) - The movie title.
 
 genre \[string\] (optional) - The genre of the movie.
 
-release_date \[string\] (optional) - The movie release date.
+release_date \[string\] (optional) - The movie release date. Format y-m-d (Ex: 1997-12-05).
 
 **Returns:** A success value and the id of the edited movie.
 
@@ -414,7 +418,7 @@ first_name \[string\] (required) - The actor's first name.
 
 last_name \[string\] (required) - The actor's last name.
 
-birth_date \[string\] (required) - The actor's birth date.
+birth_date \[string\] (required) - The actor's birth date. Format y-m-d (Ex: 1997-12-05).
 
 gender \[string\] (required) - The actor's gender.
 
@@ -446,7 +450,7 @@ first_name \[string\] (optional) - The actor's first name.
 
 genre \[string\] (optional) - The actor's last name.
 
-birth_date \[string\] (optional) - The actor's birth date.
+birth_date \[string\] (optional) - The actor's birth date. Format y-m-d (Ex: 1997-12-05).
 
 gender \[string\] (optional) - The actor's gender.
 
