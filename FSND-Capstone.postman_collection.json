@@ -11,11 +11,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}:5000/movies?page=1",
+					"raw": "{{host}}/movies?page=1",
 					"host": [
 						"{{host}}"
 					],
-					"port": "5000",
 					"path": [
 						"movies"
 					],
@@ -303,7 +302,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikg4UlMtbXlmM0lyaTFWM3k3QjRiWiJ9.eyJpc3MiOiJodHRwczovL2NsYXNzdWRhY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWViMDdmOTIxY2MxYWMwYzE0ODRlZDczIiwiYXVkIjoiY2FzdGluZyIsImlhdCI6MTU5MDcxODUyOSwiZXhwIjoxNTkwODA0OTI5LCJhenAiOiJLNUtVNkFSdUpLVTRqRUtNSmM1NmtiekM0d0dGRGZaOCIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.KlLDkcxvvC7TUG23IeNgvZUfIpgADeFiMEnzwcWlTTZkCtR8UkLzpatF5_6zEBK5nf91zTgSoWKkVljuKIOKrcV7n9yVZ4BSUxsDJ_nmfAD5L5pv_m_dMPv9GnqXJY99d5ckcmB_8HhGLai1Kp_uPplzoOhQQQJXQ1M4uayK4O1AtlGQPtWj6dd5ycnMcgb_4nhWPzVvN386DzkmPj5LR3yAONnrdT98qE5n7jp6cvAXCEmKyMJUr3TBszkT3Ni34fTBFx9EPIVd9_42QYsGmamQ0zZ0g1dA0YF8Y5MO1kqDAxmU9O_H7lhGwoxXdyDhma97_UVb1ahY-KIAHXySUA",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikg4UlMtbXlmM0lyaTFWM3k3QjRiWiJ9.eyJpc3MiOiJodHRwczovL2NsYXNzdWRhY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWViMDdmOTIxY2MxYWMwYzE0ODRlZDczIiwiYXVkIjoiY2FzdGluZyIsImlhdCI6MTU5MDg1MTE2NywiZXhwIjoxNTkwOTM3NTY3LCJhenAiOiJLNUtVNkFSdUpLVTRqRUtNSmM1NmtiekM0d0dGRGZaOCIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.kD_K8aCKk9B86AkiW1KLGygzZHaZgc2qIIzCfbI0HoGisyzCc4hrJZcIzLYHMtyqMPqu6qZ1RK0_tSZ3AJr2spoWIbeZ96_k593Rgvzf4AssHUeHxl8jlmrH3CsQBnJjsc84ANyynvjYcuow7Kbg6eBmy1BODccl3Bp4czrGApg-g9N4fHm1eUWINbw4Tlk_NfX_PsG1iwdGx2ckdtsKNlvQeA8C6DyKUGeZNyd-1uEA6bsVBZRI3SMSOYaTURVWScmqEUvG7_dSBDFGQ0njHLnuuqzzQYicMpeNT8C-DVEx2B7UuHzhIoUVbg2YSvXFYM4tbdv5YB339WPu_9QWcQ",
 				"type": "string"
 			}
 		]
@@ -332,7 +331,7 @@
 	],
 	"variable": [
 		{
-			"id": "81f85bda-113c-47b2-9fde-d12ee04db5dd",
+			"id": "bda2b733-33d3-45b7-806a-dc0beec19dc9",
 			"key": "host",
 			"value": "https://fsnd-pfjare.herokuapp.com/",
 			"type": "string"
