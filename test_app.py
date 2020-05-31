@@ -289,49 +289,50 @@ class CastingAgencyAPITestCase(unittest.TestCase):
         self.assertTrue(data['success'])    
         self.assertEqual(data["deleted"], 12)  
     
-    # def test_post_actor_to_movie(self):
-    #     res = requests.post(f'{host_url}/movies/6/actors/5',
-    #                        headers=casting_director_headers)
-    #     datad = res.json()
+    def test_post_actor_to_movie(self):
+        res = requests.post(f'{host_url}/movies/6/actors/5',
+                           headers=casting_director_headers)
+        datad = res.json()
 
-    #     self.assertEqual(res.status_code, 200)
-    #     self.assertTrue(datad['success'])
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(datad['success'])
 
-    # def test_fail_auth_post_actor_to_movie(self):
-    #     res = requests.post(f'{host_url}/movies/6/actors/5',
-    #                        headers=casting_assistant_headers)
-    #     data = res.json()
-    #     self.assertEqual(res.status_code, 401)
-    #     self.assertEqual(data["description"],
-    #                      "Permission not found.")
+    def test_fail_auth_post_actor_to_movie(self):
+        res = requests.post(f'{host_url}/movies/6/actors/5',
+                           headers=casting_assistant_headers)
+        data = res.json()
+        self.assertEqual(res.status_code, 401)
+        self.assertEqual(data["description"],
+                         "Permission not found.")
 
-    # def test_fail_post_actor_to_movie(self):
-    #     res = requests.post(f'{host_url}/movies/54/actors/1',
-    #                        headers=casting_director_headers)
+    def test_fail_post_actor_to_movie(self):
+        res = requests.post(f'{host_url}/movies/54/actors/1',
+                           headers=casting_director_headers)
 
-    #     self.assertEqual(res.status_code, 404)      
+        self.assertEqual(res.status_code, 404)      
     
 
-    # def test_fail_auth_delete_actor_from_movie(self):
-    #     res = requests.delete(f'{host_url}/movies/6/actors/4',
-    #                        headers=casting_assistant_headers)
-    #     data = res.json()
-    #     self.assertEqual(res.status_code, 401)
-    #     self.assertEqual(data["description"],
-    #                      "Permission not found.")
+    def test_fail_auth_delete_actor_from_movie(self):
+        res = requests.delete(f'{host_url}/movies/6/actors/4',
+                           headers=casting_assistant_headers)
+        data = res.json()
+        self.assertEqual(res.status_code, 401)
+        self.assertEqual(data["description"],
+                         "Permission not found.")
 
-    # def test_fail_delete_actor_from_movie(self):
-    #     res = requests.delete(f'{host_url}/movies/54/actors/4',
-    #                        headers=casting_director_headers)
+    def test_fail_delete_actor_from_movie(self):
+        res = requests.delete(f'{host_url}/movies/54/actors/4',
+                           headers=casting_director_headers)
 
-    #     self.assertEqual(res.status_code, 404)  
-    # def test_delete_actor_from_movie(self):
-    #     res = requests.delete(f'{host_url}/movies/6/actors/4',
-    #                        headers=casting_director_headers)
-    #     datad = res.json()
+        self.assertEqual(res.status_code, 404)  
+    def test_delete_actor_from_movie(self):
+        res = requests.delete(f'{host_url}/movies/6/actors/4',
+                           headers=casting_director_headers)
+        datad = res.json()
 
-    #     self.assertEqual(res.status_code, 200)
-    #     self.assertTrue(datad['success'])    
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(datad['success'])    
+        
 # Make the tests conveniently executable
 if __name__ == "__main__":
     unittest.main()

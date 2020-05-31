@@ -32,6 +32,8 @@ If you are using Curl, include `-H "Authorization: Bearer an_example_4eC39HqLyjW
 
 I have created 3 users and included the corresponding bearer tokens in config.py .
 
+Run './set.sh' in terminal to set Auth0 env variables.
+
 ## Error Handling
 
 Errors are returned as JSON objects in the following format:
