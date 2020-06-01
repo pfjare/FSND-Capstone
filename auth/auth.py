@@ -1,5 +1,5 @@
 import json
-from flask import request, _request_ctx_stack
+from flask import request
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
@@ -10,6 +10,7 @@ ALGORITHMS = ['RS256']
 API_AUDIENCE = 'casting'
 
 # clientId: "0p05fRWKlFcByjn0Jx2G1qmj0ioiglgI"
+
 
 # AuthError Exception
 class AuthError(Exception):
@@ -92,13 +93,16 @@ def verify_decode_jwt(token):
         except jwt.JWTClaimsError:
             raise AuthError({
                 'code': 'invalid_claims',
-                'description': 'Incorrect claims. Please, check the audience and issuer.'
+                'description': ('Incorrect claims. Please, check the '
+                                'audience and issuer.')
             }, 401)
+
         except Exception:
             raise AuthError({
                 'code': 'invalid_header',
                 'description': 'Unable to parse authentication token.'
             }, 400)
+
     raise AuthError({
                 'code': 'invalid_header',
                 'description': 'Unable to find the appropriate key.'
@@ -111,7 +115,7 @@ def check_permissions(permission, payload):
             'code': 'invalid_claims',
             'description': 'Permissions not included in JWT.'
         }, 400)
-    
+
     if permission not in payload['permissions']:
         raise AuthError({
             'code': 'unauthorized',
